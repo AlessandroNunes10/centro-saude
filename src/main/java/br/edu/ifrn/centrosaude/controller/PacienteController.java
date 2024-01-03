@@ -46,7 +46,7 @@ public class PacienteController {
             UriComponentsBuilder uriBuilder) {
         if (repository.existsByCpf(paciente.getCpf())) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body("CPF já cadastrado. Não é permitido cadastrar pacientes com CPF duplicado.");
+                .body("CPF cadastrado.");
         } 
         Paciente pacienteLocal = repository.save(paciente);
         var uri = uriBuilder.path("/paciente/{id}").buildAndExpand(pacienteLocal.getId()).toUri();
